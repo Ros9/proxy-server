@@ -25,3 +25,69 @@ Server forms valid HTTP-request to 3rd-party service with data from client's mes
 }
 
 Server should have map to store requests from client and responses from 3rd-party service.
+
+Usage
+
+This application works as proxy-server redirected to another 3rd-party. 
+
+The are 2 endpoints:
+
+1) GET http://localhost:8080/proxy
+Example request:
+{
+    "method": "GET",
+    "url": "https://translate.yandex.com",
+    "headers": {
+        "content-type": "text/html"
+    }
+}
+Example response:
+{
+    "id": "15161464-6ee8-4e88-5221-8f6b62991a8d",
+    "status": "200 OK",
+    "headers": {
+        "Content-Length": [
+            "8628"
+        ],
+        "Content-Type": [
+            "text/html"
+        ],
+        "Strict-Transport-Security": [
+            "max-age=31536000"
+        ]
+    },
+    "length": 8628
+}
+
+2) GET http://localhost:8080/proxy
+Example response:
+[
+    {
+        "proxy_request": {
+            "method": "GET",
+            "url": "https://translate.yandex.com",
+            "headers": {
+                "content-type": "text/html"
+            }
+        },
+        "proxy_response": {
+            "id": "15161464-6ee8-4e88-5221-8f6b62991a8d",
+            "status": "200 OK",
+            "headers": {
+                "Content-Length": [
+                    "8628"
+                ],
+                "Content-Type": [
+                    "text/html"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000"
+                ]
+            },
+            "length": 8628
+        }
+    }
+]
+
+
+Also service has simple unit test for check http statuses of services
