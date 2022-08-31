@@ -97,3 +97,8 @@ Example response:
 
 
 Also service has simple unit test for check up http statuses of services
+
+For tests: 
+1) Run our application with docker or go run main.go
+2) use Golang test command:
+	go test 
