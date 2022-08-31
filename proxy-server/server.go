@@ -1,4 +1,4 @@
-package proxy
+package proxy_server
 
 import (
 	"github.com/gin-gonic/gin"
@@ -14,8 +14,8 @@ type server struct {
 
 func NewServer(endpointFactory EndpointFactory) (Server, error) {
 	router := gin.Default()
-	router.Handle("POST", "/proxy", endpointFactory.DoProxyEndpoint())
-	router.Handle("GET", "/proxy", endpointFactory.GetListEndpoint())
+	router.Handle("POST", "/proxy-server", endpointFactory.DoProxyEndpoint())
+	router.Handle("GET", "/proxy-server", endpointFactory.GetListEndpoint())
 	err := router.Run(":8080")
 	if err != nil {
 		return nil, err

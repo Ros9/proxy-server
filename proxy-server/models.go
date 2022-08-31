@@ -1,4 +1,4 @@
-package proxy
+package proxy_server
 
 type ProxyRequest struct {
 	Method  string            `json:"method"`
