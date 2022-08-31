@@ -1,5 +1,5 @@
 # proxy-server
-Test task for Golang Developer
+Description
 
 Write HTTP server for proxying HTTP-requests to 3rd-party services.
 The server is waiting HTTP-request from client (curl, for example). In request's body there should be message in JSON format. For example:
@@ -27,6 +27,12 @@ Server forms valid HTTP-request to 3rd-party service with data from client's mes
 Server should have map to store requests from client and responses from 3rd-party service.
 
 Usage
+
+1) build docker image: 
+	sudo docker build --tag proxy2 .
+2) run docker container:
+	sudo docker run -it -p 8080:8080 proxy
+
 
 This application works as proxy-server redirected to another 3rd-party. 
 
@@ -90,4 +96,4 @@ Example response:
 ]
 
 
-Also service has simple unit test for check http statuses of services
+Also service has simple unit test for check up http statuses of services
